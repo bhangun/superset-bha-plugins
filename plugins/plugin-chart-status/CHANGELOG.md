@@ -59,7 +59,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* add private annotation ([#17](https://github.com/nielsen-oss/superset-viz-plugins/issues/17)) ([6fa5db5](https://github.com/nielsen-oss/superset-viz-plugins/commit/6fa5db5cff10792d6f14eb82f30067c8dc3e2c71))
+* add private annotation ([#17](https://github.com/bhangun/superset-bha-plugins/issues/17)) ([6fa5db5](https://github.com/nielsen-oss/superset-viz-plugins/commit/6fa5db5cff10792d6f14eb82f30067c8dc3e2c71))
 
 
 

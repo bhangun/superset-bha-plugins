@@ -27,7 +27,7 @@
   ],
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/nielsen-oss/superset-viz-plugins/issues"
+    "url": "https://github.com/bhangun/superset-bha-plugins/issues"
   },
   "homepage": "https://github.com/nielsen-oss/superset-viz-plugins#readme",
   "publishConfig": {

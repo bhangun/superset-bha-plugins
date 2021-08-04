@@ -40,7 +40,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* fix precision ([#47](https://github.com/nielsen-oss/superset-viz-plugins/issues/47)) ([61e01c1](https://github.com/nielsen-oss/superset-viz-plugins/commit/61e01c133643917268d8915d13ddbc6cbcc5b587))
+* fix precision ([#47](https://github.com/bhangun/superset-bha-plugins/issues/47)) ([61e01c1](https://github.com/nielsen-oss/superset-viz-plugins/commit/61e01c133643917268d8915d13ddbc6cbcc5b587))
 
 
 
@@ -51,7 +51,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* add adaptive format percision / fix charts alignments ([#46](https://github.com/nielsen-oss/superset-viz-plugins/issues/46)) ([9d2908b](https://github.com/nielsen-oss/superset-viz-plugins/commit/9d2908b99b4e738090ad587808cb3950eba473b5))
+* add adaptive format percision / fix charts alignments ([#46](https://github.com/bhangun/superset-bha-plugins/issues/46)) ([9d2908b](https://github.com/nielsen-oss/superset-viz-plugins/commit/9d2908b99b4e738090ad587808cb3950eba473b5))
 
 
 
@@ -142,7 +142,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* Waterfall sort ([#25](https://github.com/nielsen-oss/superset-viz-plugins/issues/25)) ([a182ca7](https://github.com/nielsen-oss/superset-viz-plugins/commit/a182ca72bd766d61a94975a8c1a24a9cb0748f23))
+* Waterfall sort ([#25](https://github.com/bhangun/superset-bha-plugins/issues/25)) ([a182ca7](https://github.com/nielsen-oss/superset-viz-plugins/commit/a182ca72bd766d61a94975a8c1a24a9cb0748f23))
 
 
 
@@ -169,7 +169,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* sorting for composed chart ([#15](https://github.com/nielsen-oss/superset-viz-plugins/issues/15)) ([af0584a](https://github.com/nielsen-oss/superset-viz-plugins/commit/af0584af5b2108fabdb2c6c0fa0654a5a556fbd1))
+* sorting for composed chart ([#15](https://github.com/bhangun/superset-bha-plugins/issues/15)) ([af0584a](https://github.com/nielsen-oss/superset-viz-plugins/commit/af0584af5b2108fabdb2c6c0fa0654a5a556fbd1))
 
 
 
@@ -180,7 +180,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* add private annotation ([#17](https://github.com/nielsen-oss/superset-viz-plugins/issues/17)) ([6fa5db5](https://github.com/nielsen-oss/superset-viz-plugins/commit/6fa5db5cff10792d6f14eb82f30067c8dc3e2c71))
+* add private annotation ([#17](https://github.com/bhangun/superset-bha-plugins/issues/17)) ([6fa5db5](https://github.com/nielsen-oss/superset-viz-plugins/commit/6fa5db5cff10792d6f14eb82f30067c8dc3e2c71))
 
 
 
@@ -215,7 +215,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* composed chart ([#6](https://github.com/nielsen-oss/superset-viz-plugins/issues/6)) ([d582e56](https://github.com/nielsen-oss/superset-viz-plugins/commit/d582e56b98ebc626968b4f9587348bdeb0e4b20c))
+* composed chart ([#6](https://github.com/bhangun/superset-bha-plugins/issues/6)) ([d582e56](https://github.com/nielsen-oss/superset-viz-plugins/commit/d582e56b98ebc626968b4f9587348bdeb0e4b20c))
 * delete config ([13a2d34](https://github.com/nielsen-oss/superset-viz-plugins/commit/13a2d34ef688d76520d722e3d263ed70681c31cf))
 * fix waterfall 0 values ([5ac85f2](https://github.com/nielsen-oss/superset-viz-plugins/commit/5ac85f26f951a0782b1f816825542b9bc2fdffd3))
 

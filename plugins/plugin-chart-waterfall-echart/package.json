@@ -1,0 +1,42 @@
+{
+  "name": "@superset-bha-plugins/plugin-chart-tura-waterfall",
+  "version": "0.1.0",
+  "description": "Superset - Waterfall Echart",
+  "sideEffects": false,
+  "main": "lib/index.js",
+  "module": "esm/index.js",
+  "files": [
+    "esm",
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apache-superset/superset-ui.git"
+  },
+  "keywords": [
+    "superset"
+  ],
+  "author": "Superset",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/apache-superset/superset-ui/issues"
+  },
+  "homepage": "https://github.com/apache-superset/superset-ui#readme",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@superset-ui/core": "^0.17.60",
+    "@superset-ui/chart-controls": "^0.17.60",
+    "@superset-ui/plugin-chart-echarts": "^0.17.60",
+    "echarts": "^5.1.2",
+    "lodash": "^4.17.15"
+  },
+  "peerDependencies": {
+    "react": "^16.13.1"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.0",
+    "jest": "^26.0.1"
+  }
+}

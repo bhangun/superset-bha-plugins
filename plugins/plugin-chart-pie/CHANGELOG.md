@@ -41,7 +41,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Features
 
 * migrate to superset 1.0 ([e53acfe](https://github.com/nielsen-oss/superset-viz-plugins/commit/e53acfed93ee1f39fcd8a63b065b284ab513b692))
-* pie story with full data flow ([#30](https://github.com/nielsen-oss/superset-viz-plugins/issues/30)) ([86f500e](https://github.com/nielsen-oss/superset-viz-plugins/commit/86f500ee3b59c90c564ca9a5eb6a5266eb10bbcb))
+* pie story with full data flow ([#30](https://github.com/bhangun/superset-bha-plugins/issues/30)) ([86f500e](https://github.com/nielsen-oss/superset-viz-plugins/commit/86f500ee3b59c90c564ca9a5eb6a5266eb10bbcb))
 
 
 
@@ -79,7 +79,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* sorting for composed chart ([#15](https://github.com/nielsen-oss/superset-viz-plugins/issues/15)) ([af0584a](https://github.com/nielsen-oss/superset-viz-plugins/commit/af0584af5b2108fabdb2c6c0fa0654a5a556fbd1))
+* sorting for composed chart ([#15](https://github.com/bhangun/superset-bha-plugins/issues/15)) ([af0584a](https://github.com/nielsen-oss/superset-viz-plugins/commit/af0584af5b2108fabdb2c6c0fa0654a5a556fbd1))
 
 
 
@@ -90,7 +90,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* add private annotation ([#17](https://github.com/nielsen-oss/superset-viz-plugins/issues/17)) ([6fa5db5](https://github.com/nielsen-oss/superset-viz-plugins/commit/6fa5db5cff10792d6f14eb82f30067c8dc3e2c71))
+* add private annotation ([#17](https://github.com/bhangun/superset-bha-plugins/issues/17)) ([6fa5db5](https://github.com/nielsen-oss/superset-viz-plugins/commit/6fa5db5cff10792d6f14eb82f30067c8dc3e2c71))
 
 
 

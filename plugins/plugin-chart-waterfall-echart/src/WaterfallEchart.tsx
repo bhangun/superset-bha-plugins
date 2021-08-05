@@ -16,8 +16,9 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 import React, { useEffect, createRef, useCallback } from 'react';
-// import { styled } from '@superset-ui/core';
+
 import {
   EventHandlers, 
   //TuraWaterfallProps, 
@@ -65,15 +66,17 @@ export default function WaterfallEchart(props: TuraWaterfallTransformedProps) {
     height,
     width,
     echartOptions,
-    setDataMask,
+    /* setDataMask,
     labelMap,
     groupby,
     selectedValues,
-    formData,
+    formData, */
   } = props;
 
   const rootElem = createRef<HTMLDivElement>();
 
+  console.log(echartOptions)
+/* 
   const handleChange = useCallback(
     (values: string[]) => {
       if (!formData.emitFilter) {
@@ -133,29 +136,14 @@ export default function WaterfallEchart(props: TuraWaterfallTransformedProps) {
       }
     },
   };
-
+ */
   return (
-    /* <Styles
-      ref={rootElem}
-      boldText={props.boldText}
-      headerFontSize={props.headerFontSize}
-      height={height}
-      width={width}
-    >
-      <h3>{props.headerText}</h3>
-      <pre>${JSON.stringify(data, null, 2)}</pre>
-    </Styles> */
-    
-
     <Echart
       height={height}
       width={width}
       echartOptions={echartOptions}
-      eventHandlers={eventHandlers}
-      selectedValues={selectedValues}
+      /* eventHandlers={eventHandlers}
+      selectedValues={selectedValues} */
     />
   );
 }
-
-
-

@@ -202,15 +202,15 @@ export type TuraWaterfallProps = TuraWaterfallStylesProps &
   };
 
 export interface TuraWaterfallTransformedProps {
-  formData: TuraWaterfallQueryFormData;
+  //formData: TuraWaterfallQueryFormData;
   height: number;
   width: number;
   echartOptions: EChartsOption;
-  emitFilter: boolean;
+  /* emitFilter: boolean;
   setDataMask: SetDataMaskHook;
   labelMap: Record<string, DataRecordValue[]>;
   groupby: string[];
-  selectedValues: Record<number, string>;
+  selectedValues: Record<number, string>; */
 }
 
 export type BoxPlotQueryFormData = QueryFormData & {

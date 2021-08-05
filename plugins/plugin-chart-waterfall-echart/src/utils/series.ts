@@ -31,6 +31,24 @@ import { NULL_STRING, TIMESERIES_CONSTANTS } from '../constants';
 import { LegendOrientation, LegendType } from '../types';
 import { defaultLegendPadding } from '../defaults';
 
+
+
+type WaterfallStylesProps = {
+  height: number;
+  width: number;
+};
+
+export type BarValue = [number, number];
+
+export type WaterfallChartData = {
+  [key: string]: string | boolean | number | BarValue;
+};
+
+export enum LegendPosition {
+  TOP = 'top',
+  BOTTOM = 'bottom',
+}
+
 function isDefined<T>(value: T | undefined | null): boolean {
   return value !== undefined && value !== null;
 }

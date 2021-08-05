@@ -48,7 +48,7 @@ EchartsBoxPlotChartProps
     super({
       buildQuery,
       controlPanel,
-      loadChart: () => import('../TuraWaterfall'),
+      loadChart: () => import('../WaterfallEchart'),
       metadata,
       transformProps,
     });

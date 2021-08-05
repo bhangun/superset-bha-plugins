@@ -1,0 +1,258 @@
+/**
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+//import { colorScheme } from '@superset-ui/chart-controls/src/sections';
+
+import {
+  CategoricalColorNamespace, ChartProps,
+  DataRecordValue, getMetricLabel, getNumberFormatter, getTimeFormatter, SetDataMaskHook, //TimeseriesDataRecord 
+} from '@superset-ui/core';
+import { EChartsOption, LegendComponentOption, SeriesOption } from 'echarts';
+import { TIMESERIES_CONSTANTS } from '../constants';
+import {
+  BoxPlotChartTransformedProps, BoxPlotQueryFormData, defaultGrid, defaultTooltip, defaultYAxis, DEFAULT_FORM_DATA, DEFAULT_LEGEND_FORM_DATA,
+  EchartsBoxPlotChartProps,
+  EchartsWaterfallFormData,
+  LegendOrientation, LegendType,
+  //WaterfallSeriesDataItemOption 
+} from '../types';
+
+import { extractGroupbyLabel, getColtypesMapping, LegendPosition, WaterfallChartData } from '../utils/series';
+
+
+
+
+export function getLegendProps(
+  type: LegendType,
+  orientation: LegendOrientation,
+  show: boolean,
+  zoomable = false,
+): LegendComponentOption | LegendComponentOption[] {
+  const legend: LegendComponentOption | LegendComponentOption[] = {
+    orient: [LegendOrientation.Top, LegendOrientation.Bottom].includes(orientation)
+      ? 'horizontal'
+      : 'vertical',
+    show,
+    type,
+  };
+  switch (orientation) {
+    case LegendOrientation.Left:
+      legend.left = 0;
+      break;
+    case LegendOrientation.Right:
+      legend.right = 0;
+      legend.top = zoomable ? TIMESERIES_CONSTANTS.legendRightTopOffset : 0;
+      break;
+    case LegendOrientation.Bottom:
+      legend.bottom = 0;
+      break;
+    case LegendOrientation.Top:
+    default:
+      legend.top = 0;
+      legend.right = zoomable ? TIMESERIES_CONSTANTS.legendTopRightOffset : 0;
+      break;
+  }
+  return legend;
+}
+export enum SortingType {
+  ASC = 'ASC',
+  DESC = 'DESC',
+}
+
+export type Metric = {
+  label: string;
+};
+
+
+/* 
+type FormData = {
+  xAxisColumn: string;
+  xAxisLabel: string;
+  yAxisLabel: string;
+  yAxisLabelAngle: string;
+  periodColumn: string;
+  queryFields: { metric: string };
+  metric: Metric;
+  numbersFormat: string;
+  legendPosition: LegendPosition;
+  orderByChange: SortingType;
+  useOrderByChange: boolean;
+}; */
+
+export type WaterfallEchartProps = {
+  xAxisDataKey: string;
+  dataKey: string;
+  xAxisLabel: string;
+  yAxisLabel: string;
+  yAxisLabelAngle: number;
+  legendPosition: LegendPosition;
+  error?: string;
+  numbersFormat?: string;
+  height: number;
+  resetFilters?: Function;
+  onBarClick?: Function;
+  width: number;
+  data: WaterfallChartData[];
+  ///----props waterfallechart
+  //formData: FormData;//BoxPlotQueryFormData;
+  echartOptions: EChartsOption;
+  emitFilter: boolean;
+  setDataMask: SetDataMaskHook;
+  labelMap: Record<string, DataRecordValue[]>;
+  groupby: string[];
+  selectedValues: Record<number, string>;
+};
+
+
+
+export default function transformProps(chartProps: ChartProps): WaterfallEchartProps {
+  const { width, height, formData, queriesData, hooks } = chartProps;
+/* 
+  const {
+    periodColumn,
+    xAxisColumn,
+    metric,
+    numbersFormat,
+    legendPosition,
+    orderByChange,
+    useOrderByChange,
+  } = formData as FormData; */
+
+  const { data = [] } = queriesData[0];
+  const { setDataMask = () => { } } = hooks;
+
+
+
+  console.log('formData via TransformProps.ts', formData);
+
+  const {
+    legendOrientation,
+    legendType,
+    showLegend,
+  }: EchartsWaterfallFormData = {
+    ...DEFAULT_LEGEND_FORM_DATA,
+    ...DEFAULT_FORM_DATA,
+    ...formData,
+  };
+
+  /*  const colorFn = CategoricalColorNamespace.getScale(colorScheme as string);
+ 
+   const numberFormatter = getNumberFormatter(numberFormat);
+ 
+   const metricLabels = formdataMetrics.map(getMetricLabel); */
+
+  const columnsLabelMap = new Map<string, DataRecordValue[]>();
+
+  console.log('--------1--------')
+  console.log(queriesData[0].colnames)
+  console.log(queriesData[0].data)
+  console.log(formData)
+
+  const name = queriesData[0].colnames[0]
+  const topValuesName = queriesData[0].colnames[1]
+  const bottomValuesName = queriesData[0].colnames[2]
+
+  console.log(name)
+  const axisname = Array()
+  const dataTop = Array()
+  const dataBottom = Array()
+
+
+  const category = axisname
+
+  const series: SeriesOption[] = [
+    {
+      name: 'Bottom Value',
+      type: 'bar',
+      stack: 'total',
+      itemStyle: {
+        borderColor: 'rgba(0,0,0,0)',
+        color: 'rgba(0,0,0,0)'
+      },
+      emphasis: {
+        itemStyle: {
+          borderColor: 'rgba(0,0,0,0)',
+          color: 'rgba(0,0,0,0)'
+        }
+      },
+      /*data: transformedData*/
+      data: dataBottom //[0, 1000, 1400, 2800, 300, 0]
+    },
+    {
+      name: 'Top Value',
+      type: 'bar',
+      stack: 'total',
+      label: {
+        show: true,
+        position: 'inside'
+      },
+      data: dataTop //[2900, 1200, 300, 200, 900, 300]
+    }
+  ]
+
+  const echartOptions: EChartsOption = {
+    grid: {
+      ...defaultGrid,
+    },
+    tooltip: {
+      ...defaultTooltip,
+      trigger: 'axis',
+    },
+    legend: {
+      ...getLegendProps(legendType, legendOrientation, showLegend),
+      data: Array.from(columnsLabelMap.keys()),
+    },
+    series,
+    //series_waterfall,
+    xAxis: {
+      type: 'category',
+      splitLine: { show: true },
+      data: category
+    },
+    yAxis: {
+      ...defaultYAxis,
+      type: 'value',
+      // axisLabel: { formatter: numberFormatter },
+    },
+  }
+
+  /* const labelMap = data.reduce((acc: Record<string, DataRecordValue[]>, datum) => {
+    const label = extractGroupbyLabel({
+      datum,
+      groupby,
+      coltypeMapping,
+      
+    });
+    return {
+      ...acc,
+      [label]: groupby.map(col => datum[col]),
+    };
+  }, {}); */
+
+  return {
+    formData,
+    width,
+    height,
+    echartOptions,
+    setDataMask,
+    //emitFilter,
+    // labelMap,
+    //groupby,
+    //selectedValues,
+  };
+}

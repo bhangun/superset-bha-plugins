@@ -41,6 +41,7 @@ export type Metric = {
 };
 
 
+
 export const defaultGrid = {
   containLabel: true,
 };
@@ -53,12 +54,29 @@ export const defaultYAxis = {
   scale: true,
 };
 
+const RED = '#a90000';
+const BLUE = '#0081bd';
+const GREEN = '#00d103';
+
+
 export const defaultLegendPadding = {
   [LegendOrientation.Top]: 20,
   [LegendOrientation.Bottom]: 20,
   [LegendOrientation.Left]: 170,
   [LegendOrientation.Right]: 170,
 };
+
+export function dataStyled(sign:string, value:number) {
+  let _color = BLUE
+  if(sign==='-') _color = RED
+  else if(sign ==='+') _color = GREEN
+  return {
+    value: value,
+    itemStyle: {
+      color: _color
+    }
+  }
+}
 
 
 export type WaterfallEchartProps = {
@@ -119,7 +137,7 @@ type FormData = {
 
 //export default function transformProps(chartProps: ChartProps): WaterfallChartProps {
 //export default function transformProps(chartProps: ChartProps): WaterfallEchartProps {
-  export default function transformProps(chartProps: ChartProps): TuraWaterfallTransformedProps {
+export default function transformProps(chartProps: ChartProps): TuraWaterfallTransformedProps {
 
   const { width, height, formData, queriesData } = chartProps;
 
@@ -133,24 +151,6 @@ type FormData = {
     useOrderByChange,
   } = formData as FormData;
 
-  const valueColumn = metric.label;
-  const data = queriesData?.[0]?.data as QueryData[];
-
-  /* const rechartsData = convertDataForRecharts(
-    periodColumn,
-    xAxisColumn,
-    valueColumn,
-    data,
-    orderByChange,
-    useOrderByChange,
-  ); */
-
-let resultData = null;//createResult()
-
-/*   let resultData = createReChartsBarValues(rechartsData, valueColumn, periodColumn);
-
-  resultData = processNumbers(resultData, metric.label, formData.numbersFormat, formData.numbersFormatDigits);
- */
 
   const {
     legendOrientation,
@@ -185,8 +185,7 @@ let resultData = null;//createResult()
           color: 'rgba(0,0,0,0)'
         }
       },
-      /*data: transformedData*/
-      data: dataBottom //[0, 1000, 1400, 2800, 300, 0]
+      data: dataBottom 
     },
     {
       name: 'Top Value',
@@ -196,11 +195,11 @@ let resultData = null;//createResult()
         show: true,
         position: 'inside'
       },
-      data: dataTop //[2900, 1200, 300, 200, 900, 300]
+      data: dataTop 
     }
   ]
 
-   const echartOptions: EChartsOption = {
+  const echartOptions: EChartsOption = {
     grid: {
       ...defaultGrid,
     },
@@ -234,8 +233,8 @@ let resultData = null;//createResult()
     yAxisLabelAngle: -Number(formData.yAxisLabelAngle), */
     width,
     height,
-   // legendPosition,
-   // numbersFormat,
+    // legendPosition,
+    // numbersFormat,
     //formData,
     echartOptions,
     //setDataMask,

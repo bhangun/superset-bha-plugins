@@ -39,8 +39,8 @@ EchartsBoxPlotChartProps
    */
   constructor() {
     const metadata = new ChartMetadata({
-      description: 'Tura Waterfall Chart',
-      name: t('Tura Waterfall Chart'),
+      description: 'Echart Waterfall Chart',
+      name: t('Echart Waterfall Chart'),
       thumbnail,
       
     });

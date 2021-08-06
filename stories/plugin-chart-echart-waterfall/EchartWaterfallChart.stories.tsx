@@ -20,15 +20,15 @@ import React from 'react';
 import { D3_FORMAT_OPTIONS } from '@superset-ui/chart-controls';
 import { ChartProps, supersetTheme, ThemeProvider } from '@superset-ui/core';
 import WaterfallEchart from '../../plugins/plugin-chart-waterfall-echart/src/WaterfallEchart';
-import transformProps, { WaterfallEchartProps } from '../../plugins/plugin-chart-waterfall-echart/src/plugin/transformProps';
-import { legendTop } from '../../plugins/plugin-chart-waterfall/test/__mocks__/waterfallProps';
+import transformProps, { dataStyled, WaterfallEchartProps } from '../../plugins/plugin-chart-waterfall-echart/src/plugin/transformProps';
 import { extractTransformProps } from '../utils';
 import { EchartsBoxPlotChartProps, TuraWaterfallTransformedProps } from '../../plugins/plugin-chart-waterfall-echart/src/types';
+import { echartdata } from '../../plugins/plugin-chart-waterfall-echart/test/__mocks__/echartWaterfallProps';
 
 
-export const Contoh = () =>(
+export const Contoh = () => (
   <div> bismillah</div>
-  );
+);
 
 export default {
   title: 'Plugins/Echart Waterfall',
@@ -64,11 +64,47 @@ var labelOption = {
   }
 }; */
 
+
+
+const period_value = [150, 285, 206, 725]
+const period_type = [
+  'Physical Availability',
+  'Utilization',
+  'Productivity',
+  'Actual Production']
+const period = [
+  'Production Plan',
+  'Production Plan',
+  'Production Plan',
+  'Actual Production'
+]
+
+const base = [0, 200, 500, 153,]
+
+const barData = [1367, 1300, 1208, 1154,]
+
+function baseBar() {
+  return base
+}
+
+function bar() {
+  const _default = '0'
+  const _plus = '+'
+  const _minus = '-'
+  var _temp = []
+  const _data = barData.forEach(i => {
+    _temp.push(dataStyled('-', i))
+  })
+
+  return _temp
+}
+
+
 const option = {
   title: {
-    text: '阶梯瀑布图',
-    subtext: 'From ExcelHome',
-    sublink: 'http://e.weibo.com/1341556070/Aj1J2x5a5'
+    text: '',
+    subtext: '',
+    sublink: ''
   },
   tooltip: {
     trigger: 'axis',
@@ -90,6 +126,7 @@ const option = {
     }
   },
   legend: {
+    show: true,
     data: ['satu', 'dua', 'tiga']
   },
   grid: {
@@ -100,16 +137,9 @@ const option = {
   },
   xAxis: {
     type: 'category',
-    axisTick: { show: false },
+    axisTick: { show: true, alignWithLabel: true },
     splitLine: { show: false },
-    data: ['satu', 'dua', 'tiga', 'empat', 'lima']
-    /*data: function () {
-        var list = [];
-        for (var i = 1; i <= 11; i++) {
-            list.push('11月' + i + '日');
-        }
-        return list;
-    }()*/
+    data: ['satu', 'dua', 'tiga', 'empat', 'lima'],
   },
   yAxis: {
     type: 'value'
@@ -130,7 +160,7 @@ const option = {
         },
         focus: 'series'
       },
-      data: [0, 1367, 1000, 153, 1376, 1376, 1511, 1689, 1856, 1495, 1292]
+      data: baseBar(),
     },
     {
       name: 'base',
@@ -138,59 +168,29 @@ const option = {
       stack: 'stack',
       label: {
         show: true,
-        //label: labelOption,
         position: 'top'
       },
       emphasis: {
         focus: 'series'
       },
-      data: [1367, '-', '-', 100, '-', 135, 178, 286, '-', '-', '-']
+      data: bar(),
     },
-    {
-      name: 'merah',
-      type: 'bar',
-      stack: 'stack',
-      color: '#f34',
-      label: {
-        show: true,
-       // label: labelOption,
-        position: 'bottom',
-        color: '#f34'
-      },
-      emphasis: {
-        focus: 'series'
-      },
-      data: ['-', '-', 300, 1208, 154, '-', '-', '-', 119, 361, 203]
-    },
-    {
-      name: 'Kuning',
-      type: 'bar',
-      stack: 'stack',
-      color: '#6e5',
-      label: {
-        show: true,
-       // label: labelOption,
-        position: 'top'
-      },
-      emphasis: {
-        focus: 'series'
-      },
-      data: ['-', 320, '-', 200, 200, 335, 178, 286, '-', '-', '-']
-    },
-
   ]
 };
 
 console.log(legendTop)
 console.log(transformProps)
 
-const Template = args => (
-  <ThemeProvider theme={supersetTheme}>
-    {/* <WaterfallEchart echartOptions={option} width={400} height={400} {...args}  /> */}
-   {/*  <WaterfallEchart  {...args} /> */}
-    <WaterfallEchart echartOptions={option} width={400} height={400} {...extractTransformProps({ args, props: legendTop, transformProps })} />
-  </ThemeProvider>
-);
+const Template = args => {
+  console.log(args)
+  return (
+    <ThemeProvider theme={supersetTheme}>
+      {/* <WaterfallEchart echartOptions={option} width={400} height={400} {...args}  /> */}
+      {/*  <WaterfallEchart  {...args} /> */}
+     {/*  <WaterfallEchart echartOptions={option} width={600} height={600} {...args} /> */}
+      <WaterfallEchart {...extractTransformProps({ args, props: echartdata, transformProps })} />
+    </ThemeProvider>)
+};
 
 
 
@@ -198,9 +198,9 @@ const Template = args => (
 export const Default = Template.bind({});
 Default.args = {
   //...transformProps((legendTop as unknown) as EchartsBoxPlotChartProps),
- //...transformProps((legendTop as unknown) as WaterfallEchartProps),
+  ...transformProps((echartdata as unknown) as WaterfallEchartProps),
   //...transformProps((legendTop as unknown) as TuraWaterfallTransformedProps),
-  echar: legendTop.queriesData,
+  echar: echartdata.queriesData,
 };
 
 
